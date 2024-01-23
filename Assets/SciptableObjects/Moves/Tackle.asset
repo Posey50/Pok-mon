@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ceb09db17da5254f9e1418feb0187c8, type: 3}
-  m_Name: Flammeche
+  m_Name: Tackle
   m_EditorClassIdentifier: 
-  name: "Flamm\xE8che"
-  type: 2
-  damages: 100
+  _name: Tackle
+  _type: 1
+  _isHealer: 0
+  _damages: 20

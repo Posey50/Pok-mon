@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ceb09db17da5254f9e1418feb0187c8, type: 3}
-  m_Name: Pistoleta_a_O
+  m_Name: Ember
   m_EditorClassIdentifier: 
-  name: "Pistolet \xE0 O"
-  type: 3
-  damages: 90
+  _name: Ember
+  _type: 2
+  _isHealer: 0
+  _damages: 100

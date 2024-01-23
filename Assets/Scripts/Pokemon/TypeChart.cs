@@ -7,33 +7,33 @@ public class TypeChart : MonoBehaviour
     // Thanks to Game Dev Experiments for this part https://www.youtube.com/watch?v=PvtHnmSy9qc&ab_channel=GameDevExperiments
 
     /// <summary>
-    /// All pokemon types
+    /// All pokemon types.
     /// </summary>
     public enum PokemonType
     {
         None,
         Normal,
-        Feu,
-        Eau,
-        Électrik,
-        Plante,
-        Glace,
-        Combat,
+        Fire,
+        Water,
+        Electric,
+        Grass,
+        Ice,
+        Fighting,
         Poison,
-        Sol,
-        Vol,
-        Psy,
-        Insecte,
-        Roche,
-        Spectre,
+        Ground,
+        Flying,
+        Psychic,
+        Bug,
+        Rock,
+        Ghost,
         Dragon,
-        Ténèbres,
-        Acier,
-        Fée
+        Dark,
+        Steel,
+        Fairy
     }
 
     /// <summary>
-    /// Table Types
+    /// Table Types.
     /// </summary>
     private static readonly float[][] chart =
     {

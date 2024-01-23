@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ceb09db17da5254f9e1418feb0187c8, type: 3}
-  m_Name: Soin
+  m_Name: Water_Gun
   m_EditorClassIdentifier: 
-  name: Soin
-  type: 1
-  isHealer: 1
-  damages: 30
+  _name: Water Gun
+  _type: 3
+  _isHealer: 0
+  _damages: 90

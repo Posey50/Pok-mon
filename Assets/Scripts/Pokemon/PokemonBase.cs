@@ -6,63 +6,105 @@ using UnityEngine;
 public class PokemonBase : ScriptableObject
 {
     /// <summary>
-    /// Name of the pokemon
+    /// Name of the pokemon.
     /// </summary>
-    [SerializeField] new string name;
+    [SerializeField]
+    private string _name;
 
     /// <summary>
-    /// Type of the pokemon
+    /// Type of the pokemon.
     /// </summary>
-    [SerializeField] PokemonType type;
+    [SerializeField]
+    private PokemonType _type;
 
     /// <summary>
-    /// Maximum of HP of the pokemon
+    /// Maximum of HP of the pokemon.
     /// </summary>
-    [SerializeField] int maxHp;
+    [SerializeField]
+    private int _maxHP;
 
     /// <summary>
-    /// Attack's statistic of the pokemon
+    /// Attack statistic of the pokemon.
     /// </summary>
-    [SerializeField] int attack;
+    [SerializeField]
+    private int _attack;
 
     /// <summary>
-    /// Defense's statistic of the pokemon
+    /// Defense statistic of the pokemon.
     /// </summary>
-    [SerializeField] int defense;
+    [SerializeField]
+    private int _defense;
 
     /// <summary>
-    /// Speed's statistic of the pokemon
+    /// Speed statistic of the pokemon.
     /// </summary>
-    [SerializeField] int speed;
+    [SerializeField]
+    private int _speed;
 
     /// <summary>
-    /// List of attacks of the pokemon
+    /// List of attacks of the pokemon.
     /// </summary>
-    [SerializeField] List<MoveBase> MoveBases;
+    [SerializeField]
+    private List<MoveBase> _moveBases;
 
     /// <summary>
-    /// All pokemon types
+    /// Gets the name of the pokemon.
+    /// </summary>
+    public string Name { get { return _name; } private set { } }
+
+    /// <summary>
+    /// Gets the type of the pokemon.
+    /// </summary>
+    public PokemonType Type { get { return _type; } private set { } }
+
+    /// <summary>
+    /// Gets the maximum of HP of the pokemon.
+    /// </summary>
+    public int MaxHP { get { return _maxHP; } private set { } }
+
+    /// <summary>
+    /// Gets the attack statistic of the pokemon.
+    /// </summary>
+    public int Attack { get { return _attack; } private set { } }
+
+    /// <summary>
+    /// Gets the defense statistic of the pokemon.
+    /// </summary>
+    public int Defense { get { return _defense; } private set { } }
+
+    /// <summary>
+    /// Gets the speed statistic of the pokemon.
+    /// </summary>
+    public int Speed { get { return _speed; } private set { } }
+
+    /// <summary>
+    /// Gets the list of attacks of the pokemon.
+    /// </summary>
+    public List<MoveBase> MoveBases { get { return _moveBases; } private set { } }
+
+    /// <summary>
+    /// All pokemon types.
     /// </summary>
     public enum PokemonType
     {
         None,
         Normal,
-        Feu,
-        Eau,
-        Électrik,
-        Plante,
-        Glace,
-        Combat,
+        Fire,
+        Water,
+        Electric,
+        Grass,
+        Ice,
+        Fighting,
         Poison,
-        Sol,
-        Vol,
-        Psy,
-        Insecte,
-        Roche,
-        Spectre,
+        Ground,
+        Flying,
+        Psychic,
+        Bug,
+        Rock,
+        Ghost,
         Dragon,
-        Ténèbres,
-        Acier,
-        Fée
+        Dark,
+        Steel,
+        Fairy
     }
 }
