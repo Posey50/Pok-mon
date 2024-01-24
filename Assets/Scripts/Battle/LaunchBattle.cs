@@ -62,7 +62,7 @@ public class LaunchBattle : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // Generate a battle
-            StartCoroutine(_battleManager.GenerateBattle());
+            StartCoroutine(_battleManager.SetUpBattle());
         }
         else
         {

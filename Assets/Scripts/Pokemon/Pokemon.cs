@@ -20,4 +20,28 @@ public class Pokemon
     /// Actual HP of the pokemon.
     /// </summary>
     public int HP { get; set; }
+
+    /// <summary>
+    /// A value indicating that the pokemon is out of his pokeball.
+    /// </summary>
+    public bool IsOutOfHisPokeball { get; set; }
+
+    /// <summary>
+    /// A value indicating indicating that the pokemon is KO.
+    /// </summary>
+    public bool IsKO { get; set; }
+
+    //public IEnumerator TakeDamage(Move move, Pokemon attacker)
+    //{
+
+    //    float effectiveness = TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type);
+
+    //    int damage = 
+
+    //    HP -= damage;
+    //    if (HP <= 0)
+    //    {
+    //        HP = 0;
+    //    }
+    //}
 }

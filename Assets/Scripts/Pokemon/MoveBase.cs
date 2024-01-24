@@ -48,30 +48,4 @@ public class MoveBase : ScriptableObject
     /// Gets the damages statistic of the attack in percents.
     /// </summary>
     public int Damages { get { return _damages; } private set { } }
-
-    /// <summary>
-    /// All pokemon types.
-    /// </summary>
-    public enum PokemonType
-    {
-        None,
-        Normal,
-        Fire,
-        Water,
-        Electric,
-        Grass,
-        Ice,
-        Fighting,
-        Poison,
-        Ground,
-        Flying,
-        Psychic,
-        Bug,
-        Rock,
-        Ghost,
-        Dragon,
-        Dark,
-        Steel,
-        Fairy
-    }
 }

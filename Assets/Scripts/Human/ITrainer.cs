@@ -20,12 +20,22 @@ public interface ITrainer
     public int TeamSize { get; set; }
 
     /// <summary>
+    /// The active pokemon of the trainer.
+    /// </summary>
+    public Pokemon ActivePokemon { get; set; }
+
+    /// <summary>
     /// Sort the pokemon pool by alphabetic order to be sure that it's the same order at each game.
     /// </summary>
     public void SortPokemonPool();
 
     /// <summary>
-    /// Generate a random team with the team size given and with pokemons from the pokemon pool.
+    /// Generates a random team with pokemons from the pokemon pool.
     /// </summary>
     public void GenerateTeam();
+
+    /// <summary>
+    /// Choose a random pokemon to send.
+    /// </summary>
+    public void ChooseAPokemonToSend();
 }

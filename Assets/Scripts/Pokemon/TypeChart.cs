@@ -2,35 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TypeChart : MonoBehaviour
+public static class TypeChart
 {
     // Thanks to Game Dev Experiments for this part https://www.youtube.com/watch?v=PvtHnmSy9qc&ab_channel=GameDevExperiments
-
-    /// <summary>
-    /// All pokemon types.
-    /// </summary>
-    public enum PokemonType
-    {
-        None,
-        Normal,
-        Fire,
-        Water,
-        Electric,
-        Grass,
-        Ice,
-        Fighting,
-        Poison,
-        Ground,
-        Flying,
-        Psychic,
-        Bug,
-        Rock,
-        Ghost,
-        Dragon,
-        Dark,
-        Steel,
-        Fairy
-    }
 
     /// <summary>
     /// Table Types.

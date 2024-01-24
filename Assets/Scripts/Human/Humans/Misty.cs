@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Brock : Human, IHealer, ITrainer
+public class Misty : Human, ITrainer
 {
     [field: SerializeField]
-    public List<Pokemon> Team { get; set; } = new();
+    public List<Pokemon> Team { get; set; } = new ();
 
     [field: SerializeField]
     public List<Pokemon> PokemonPool { get; set; } = new();
@@ -14,35 +14,17 @@ public class Brock : Human, IHealer, ITrainer
     [field: SerializeField]
     public int TeamSize { get; set; } = new();
 
+    [field: SerializeField]
+    public Pokemon ActivePokemon { get; set; } = new();
+
     private void Start()
     {
-        Name = "Brock";
+        Name = "Misty";
 
         GameManager.Instance.HumanList.Add(this);
         GameManager.Instance.TrainerList.Add(this);
-        GameManager.Instance.HealerList.Add(this);
 
         SortPokemonPool();
-    }
-
-    public void Revive()
-    {
-
-    }
-
-    public void MaxRevive()
-    {
-
-    }
-
-    public void Cook()
-    {
-
-    }
-
-    public void FullHeal()
-    {
-        throw new System.NotImplementedException();
     }
 
     public void SortPokemonPool()
@@ -58,9 +40,11 @@ public class Brock : Human, IHealer, ITrainer
             Team.Clear();
         }
 
+        // Pokemons available for the team
         List<Pokemon> pokemonsAvailable = new(PokemonPool);
 
-        for (int i = 0; i < TeamSize; i++)
+        // Create the team
+        for (int j = 0; j < TeamSize; j++)
         {
             if (pokemonsAvailable.Count > 0)
             {
@@ -71,5 +55,23 @@ public class Brock : Human, IHealer, ITrainer
                 pokemonsAvailable.Remove(pokemonToAdd);
             }
         }
+    }
+
+    public void ChooseAPokemonToSend()
+    {
+        List<Pokemon> pokemonAvailableInTheTeam = new(Team);
+
+        // Sort pokemons KO and the active pokemon if there is one
+        for (int i = 0; i < Team.Count; i++)
+        {
+            if (Team[i].IsKO || Team[i].IsOutOfHisPokeball)
+            {
+                pokemonAvailableInTheTeam.Remove(Team[i]);
+            }
+        }
+
+        // Choose a random pokemon to send
+        ActivePokemon = pokemonAvailableInTheTeam[Random.Range(0, pokemonAvailableInTheTeam.Count)];
+        ActivePokemon.IsOutOfHisPokeball = true;
     }
 }

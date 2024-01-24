@@ -14,6 +14,9 @@ public class Ash : Human, ITrainer
     [field: SerializeField]
     public int TeamSize { get; set; } = new();
 
+    [field: SerializeField]
+    public Pokemon ActivePokemon { get; set; } = new();
+
     private void Start()
     {
         Name = "Ash";
@@ -37,9 +40,11 @@ public class Ash : Human, ITrainer
             Team.Clear();
         }
 
-        List<Pokemon> pokemonsAvailable = new (PokemonPool);
+        // Pokemons available for the team
+        List<Pokemon> pokemonsAvailable = new(PokemonPool);
 
-        for (int i = 0; i < TeamSize; i++)
+        // Create the team
+        for (int j = 0; j < TeamSize; j++)
         {
             if (pokemonsAvailable.Count > 0)
             {
@@ -50,5 +55,23 @@ public class Ash : Human, ITrainer
                 pokemonsAvailable.Remove(pokemonToAdd);
             }
         }
+    }
+
+    public void ChooseAPokemonToSend()
+    {
+        List<Pokemon> pokemonAvailableInTheTeam = new(Team);
+
+        // Sort pokemons KO and the active pokemon if there is one
+        for (int i = 0; i < Team.Count; i++)
+        {
+            if (Team[i].IsKO || Team[i].IsOutOfHisPokeball)
+            {
+                pokemonAvailableInTheTeam.Remove(Team[i]);
+            }
+        }
+
+        // Choose a random pokemon to send
+        ActivePokemon = pokemonAvailableInTheTeam[Random.Range(0, pokemonAvailableInTheTeam.Count)];
+        ActivePokemon.IsOutOfHisPokeball = true;
     }
 }

@@ -45,7 +45,7 @@ public class PokemonBase : ScriptableObject
     /// List of attacks of the pokemon.
     /// </summary>
     [SerializeField]
-    private List<MoveBase> _moveBases;
+    private List<Move> _moves;
 
     /// <summary>
     /// Gets the name of the pokemon.
@@ -80,31 +80,31 @@ public class PokemonBase : ScriptableObject
     /// <summary>
     /// Gets the list of attacks of the pokemon.
     /// </summary>
-    public List<MoveBase> MoveBases { get { return _moveBases; } private set { } }
+    public List<Move> Moves { get { return _moves; } private set { } }
+}
 
-    /// <summary>
-    /// All pokemon types.
-    /// </summary>
-    public enum PokemonType
-    {
-        None,
-        Normal,
-        Fire,
-        Water,
-        Electric,
-        Grass,
-        Ice,
-        Fighting,
-        Poison,
-        Ground,
-        Flying,
-        Psychic,
-        Bug,
-        Rock,
-        Ghost,
-        Dragon,
-        Dark,
-        Steel,
-        Fairy
-    }
+/// <summary>
+/// All pokemon types.
+/// </summary>
+public enum PokemonType
+{
+    None,
+    Normal,
+    Fire,
+    Water,
+    Electric,
+    Grass,
+    Ice,
+    Fighting,
+    Poison,
+    Ground,
+    Flying,
+    Psychic,
+    Bug,
+    Rock,
+    Ghost,
+    Dragon,
+    Dark,
+    Steel,
+    Fairy
 }

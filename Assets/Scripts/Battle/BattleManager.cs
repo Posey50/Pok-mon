@@ -44,9 +44,48 @@ public class BattleManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Called to set up a battle.
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator SetUpBattle()
+    {
+        // Wait
+        yield return new WaitForSeconds(1f);
+
+        // Generate battle
+        GenerateBattle();
+
+        // Wait
+        yield return new WaitForSeconds(1f);
+
+        // Generate teams
+        yield return StartCoroutine(GenerateTeams());
+
+        // Wait
+        yield return new WaitForSeconds(1f);
+
+        // Generate the healer
+        GenerateHealer();
+
+        //Wait
+        yield return new WaitForSeconds(1f);
+
+        // Trainers send a pokemon
+        for (int i = 0; i < TrainersInBattle.Count; i++)
+        {
+            ChooseAPokemonToSend(TrainersInBattle[i]);
+            yield return new WaitForSeconds(1f);
+        }
+
+        // Start battle
+        Debug.Log("The battle starts");
+        StartCoroutine(NewBattleRound());
+    }
+
+    /// <summary>
     /// Generate a battle between two trainers with a minimum of one pokemon.
     /// </summary>
-    public IEnumerator GenerateBattle()
+    private void GenerateBattle()
     {
         // Clear the list of trainers in battle
         if (TrainersInBattle.Count > 0)
@@ -75,11 +114,6 @@ public class BattleManager : MonoBehaviour
 
         // Announces the duel
         Debug.Log(((Human)TrainersInBattle[0]).Name + " and " + ((Human)TrainersInBattle[1]).Name + " face each other");
-
-        // Wait
-        yield return new WaitForSeconds(1f);
-
-        StartCoroutine(GenerateTeams());
     }
 
     /// <summary>
@@ -87,12 +121,10 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private IEnumerator GenerateTeams()
     {
+        //Generates teams
         for (int i = 0; i < TrainersInBattle.Count; i++)
         {
             TrainersInBattle[i].GenerateTeam();
-
-            // Wait
-            yield return new WaitForSeconds(0.1f);
         }
 
         // Announces the teams
@@ -103,26 +135,21 @@ public class BattleManager : MonoBehaviour
 
             Debug.Log(((Human)TrainersInBattle[i]).Name + " has a team made up of :");
 
-            for (int j = 0; j < TrainersInBattle[0].Team.Count; j++)
+            for (int j = 0; j < TrainersInBattle[i].Team.Count; j++)
             {
                 // Wait
                 yield return new WaitForSeconds(0.5f);
 
-                Debug.Log(TrainersInBattle[0].Team[j].Base.Name);
+                Debug.Log(TrainersInBattle[i].Team[j].Base.Name);
             }
         }
-
-        // Wait
-        yield return new WaitForSeconds(1f);
-
-        StartCoroutine(GenerateHealer());
     }
 
     /// <summary>
     /// If there is healers available, it chooses a random healer who will be at the edge of the terrain.
     /// </summary>
     /// <returns></returns>
-    public IEnumerator GenerateHealer()
+    private void GenerateHealer()
     {
         if (_gameManager.HealerList.Count > 0)
         {
@@ -136,8 +163,22 @@ public class BattleManager : MonoBehaviour
             // Anounces that there is no healer
             Debug.Log("There is nobody to observe this match");
         }
+    }
 
-        // Wait
-        yield return new WaitForSeconds(1f);
+    /// <summary>
+    /// The trainer given chooses a pokemon to send.
+    /// </summary>
+    private void ChooseAPokemonToSend(ITrainer trainer)
+    {
+        // Chooses a pokemon to send
+        trainer.ChooseAPokemonToSend();
+
+        // Anounces the pokemon
+        Debug.Log(((Human)trainer).Name + " sent out " + trainer.ActivePokemon.Base.Name);
+    }
+
+    private IEnumerator NewBattleRound()
+    {
+        yield return null;
     }
 }
