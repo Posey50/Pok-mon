@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public static class TypeChart
 {
     // Thanks to Game Dev Experiments for this part https://www.youtube.com/watch?v=PvtHnmSy9qc&ab_channel=GameDevExperiments
@@ -33,10 +29,10 @@ public static class TypeChart
     };
 
     /// <summary>
-    /// Return an efficiency coefficient depending of the type of the move and the pokemon who receives it
+    /// Return an efficiency coefficient depending of the type of the move and the pokemon who receives it.
     /// </summary>
-    /// <param name="attackType"></param>
-    /// <param name="defendType"></param>
+    /// <param name="attackType"> The type of the attack received. </param>
+    /// <param name="defendType"> The type of the pokemon who receives the attack. </param>
     /// <returns></returns>
     public static float GetEffectiveness(PokemonType attackType, PokemonType defendType)
     {

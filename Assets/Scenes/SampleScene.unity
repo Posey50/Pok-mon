@@ -545,10 +545,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Team>k__BackingField: []
   <PokemonPool>k__BackingField:
-  - _base: {fileID: 11400000, guid: 588d00b025333a7449d59dea63774fe4, type: 2}
-  - _base: {fileID: 11400000, guid: 43c7ee16dd1e35647bc35b5c04526a13, type: 2}
-  - _base: {fileID: 11400000, guid: 0b80c3ba1edbb194d910314d77ee0e87, type: 2}
+  - _base: {fileID: 0}
+  - _base: {fileID: 0}
+  - _base: {fileID: 0}
   <TeamSize>k__BackingField: 2
+  <ActivePokemon>k__BackingField:
+    _base: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,10 +1411,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Team>k__BackingField: []
   <PokemonPool>k__BackingField:
-  - _base: {fileID: 11400000, guid: 588d00b025333a7449d59dea63774fe4, type: 2}
-  - _base: {fileID: 11400000, guid: 43c7ee16dd1e35647bc35b5c04526a13, type: 2}
-  - _base: {fileID: 11400000, guid: 0b80c3ba1edbb194d910314d77ee0e87, type: 2}
+  - _base: {fileID: 0}
+  - _base: {fileID: 0}
+  - _base: {fileID: 0}
   <TeamSize>k__BackingField: 2
+  <ActivePokemon>k__BackingField:
+    _base: {fileID: 0}
 --- !u!4 &1751237862
 Transform:
   m_ObjectHideFlags: 0
@@ -1651,6 +1655,8 @@ MonoBehaviour:
   <Team>k__BackingField: []
   <PokemonPool>k__BackingField: []
   <TeamSize>k__BackingField: 0
+  <ActivePokemon>k__BackingField:
+    _base: {fileID: 0}
 --- !u!4 &1973454749
 Transform:
   m_ObjectHideFlags: 0

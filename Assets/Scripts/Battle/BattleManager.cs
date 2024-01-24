@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
@@ -64,18 +65,23 @@ public class BattleManager : MonoBehaviour
         // Wait
         yield return new WaitForSeconds(1f);
 
+        // Init pokemons in the team of each trainer in the battle
+        for (int i = 0; i < TrainersInBattle.Count; i++)
+        {
+            for (int j = 0; j < TrainersInBattle[i].Team.Count; j++)
+            {
+                TrainersInBattle[i].Team[j].Init(TrainersInBattle[i]);
+            }
+        }
+
+        // Wait
+        yield return new WaitForSeconds(1f);
+
         // Generate the healer
         GenerateHealer();
 
         //Wait
         yield return new WaitForSeconds(1f);
-
-        // Trainers send a pokemon
-        for (int i = 0; i < TrainersInBattle.Count; i++)
-        {
-            ChooseAPokemonToSend(TrainersInBattle[i]);
-            yield return new WaitForSeconds(1f);
-        }
 
         // Start battle
         Debug.Log("The battle starts");
@@ -177,8 +183,109 @@ public class BattleManager : MonoBehaviour
         Debug.Log(((Human)trainer).Name + " sent out " + trainer.ActivePokemon.Base.Name);
     }
 
+    /// <summary>
+    /// Progress of a round.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator NewBattleRound()
+    {   
+        if (IsThereATrainerWithoutActivePokemon())
+        {
+            // Wait
+            yield return new WaitForSeconds(1f);
+        }
+
+
+
+        // Healer turn
+        if (HealerInBattle != null)
+        {
+            HealerTurn();
+        }
+
+        // Wait
+        yield return new WaitForSeconds(1f);
+
+        // attack
+
+        // Start a new round
+        StartCoroutine(NewBattleRound());
+    }
+
+    /// <summary>
+    /// If there is a trainer without
+    /// </summary>
+    private bool IsThereATrainerWithoutActivePokemon()
     {
+        bool IsThereATrainerWithoutActivePokemon = false;
+
+        // Check if the active pokemon is KO and send another pokemon instead
+        for (int i = 0; i < TrainersInBattle.Count; i++)
+        {
+            if (TrainersInBattle[i].ActivePokemon.IsKO)
+            {
+                IsThereATrainerWithoutActivePokemon = true;
+                ChooseAPokemonToSend(TrainersInBattle[i]);
+            }
+        }
+
+        return IsThereATrainerWithoutActivePokemon;
+    }
+
+    /// <summary>
+    /// Chooses if the healer has to intervene
+    /// </summary>
+    private void HealerTurn()
+    {
+        // Determine if the healer intervenes or not
+        switch (Random.Range(0, 3))
+        {
+            // He intervene
+            case 0:
+                {
+                    HealerInBattle.ChooseAnAction();
+                    break;
+                }
+            // He doesn't intervene
+            default:
+                {
+                    Debug.Log(((Human)HealerInBattle).Name + " chooses not to intervene");
+                    break;
+                }
+        }
+    }
+
+    private IEnumerator TrainersTurn()
+    {
+        List<Pokemon> pokemonPriority = new ();
+        pokemonPriority.Add(TrainersInBattle[0].ActivePokemon);
+        pokemonPriority.Add(TrainersInBattle[1].ActivePokemon);
+
+        // Defines order of priority
+        if (TrainersInBattle[0].ActivePokemon.Base.Speed < TrainersInBattle[1].ActivePokemon.Base.Speed)
+        {
+            pokemonPriority.Reverse();
+        }
+        else if (TrainersInBattle[0].ActivePokemon.Base.Speed == TrainersInBattle[1].ActivePokemon.Base.Speed)
+        {
+            switch (Random.Range(0,2))
+            {
+                case 0:
+                    {
+                        pokemonPriority.Reverse();
+                        break;
+                    }
+                default :
+                    {
+                        break;
+                    }
+            }
+        }
+        else
+        {
+            yield break;
+        }
+
         yield return null;
     }
 }

@@ -30,22 +30,50 @@ public class Brock : Human, IHealer, ITrainer
 
     public void Revive()
     {
-
+        Debug.Log(this.Name + " uses a Revive");
     }
 
     public void MaxRevive()
     {
-
+        Debug.Log(this.Name + " uses a Max Revive");
     }
 
     public void Cook()
     {
-
+        Debug.Log(this.Name + " cooks");
     }
 
     public void FullHeal()
     {
-        throw new System.NotImplementedException();
+        Debug.Log(this.Name + " uses a Full Heal");
+    }
+
+    public void ChooseAnAction()
+    {
+        // Chooses what to do
+        switch (Random.Range(0, 4))
+        {
+            case 0:
+                {
+                    Revive();
+                    break;
+                }
+            case 1:
+                {
+                    MaxRevive();
+                    break;
+                }
+            case 2:
+                {
+                    Cook();
+                    break;
+                }
+            case 3:
+                {
+                    FullHeal();
+                    break;
+                }
+        }
     }
 
     public void SortPokemonPool()

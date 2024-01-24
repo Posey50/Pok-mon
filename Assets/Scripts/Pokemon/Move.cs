@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Move
@@ -14,5 +12,4 @@ public class Move
     /// Gets the base of the move.
     /// </summary>
     public MoveBase Base { get { return _base; } private set { } }
-
 }

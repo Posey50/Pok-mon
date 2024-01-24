@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public interface IHealer
 {
     /// <summary>
@@ -23,4 +19,9 @@ public interface IHealer
     /// Chooses a pokemon who's not K.O and give him all of their HP.
     /// </summary>
     public void FullHeal();
+
+    /// <summary>
+    /// Chooses to intervene or not and what to do if the healer intervenes.
+    /// </summary>
+    public void ChooseAnAction();
 }
