@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System.Reflection;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance = null;
 
     public static GameManager Instance => _instance;
+
+    /// <summary>
+    /// Gets the mask to hide screen with the seed choice.
+    /// </summary>
+    [field: SerializeField]
+    public GameObject SeedScreenMask {  get; set; }
 
     /// <summary>
     /// List of all humans in the scene.
@@ -49,5 +55,33 @@ public class GameManager : MonoBehaviour
         TrainerList.OrderBy(trainer => ((Human)trainer).Name);
 
         HealerList.OrderBy(healer => ((Human)healer).Name);
+    }
+
+    /// <summary>
+    /// Called at the end of a battle to stop the game.
+    /// </summary>
+    public void GameOver()
+    {
+        // Stop the fight
+        BattleManager.Instance.StopAllCoroutines();
+
+        // Gives the possibility of restarting a fight
+        SeedScreenMask.SetActive(false);
+    }
+
+    /// <summary>
+    /// Clear every logs on the console.
+    /// </summary>
+    public void ClearLog()
+    {
+        var assembly = Assembly.GetAssembly(typeof(UnityEditor.Editor));
+        var type = assembly.GetType("UnityEditor.LogEntries");
+        var method = type.GetMethod("Clear");
+        method.Invoke(new object(), null);
+    }
+
+    private void OnApplicationQuit()
+    {
+        ClearLog();
     }
 }

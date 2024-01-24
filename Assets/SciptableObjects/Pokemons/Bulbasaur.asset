@@ -18,6 +18,6 @@ MonoBehaviour:
   _attack: 40
   _defense: 60
   _speed: 30
-  _moveBases:
-  - {fileID: 11400000, guid: 00ee894c1edea44468d12a8b369de466, type: 2}
-  - {fileID: 11400000, guid: 6b0e1ddc08f4bee4ab33d8012c03ef52, type: 2}
+  _moves:
+  - _base: {fileID: 11400000, guid: 00ee894c1edea44468d12a8b369de466, type: 2}
+  - _base: {fileID: 11400000, guid: 6b0e1ddc08f4bee4ab33d8012c03ef52, type: 2}

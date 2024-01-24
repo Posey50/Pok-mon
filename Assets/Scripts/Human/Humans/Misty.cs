@@ -70,8 +70,26 @@ public class Misty : Human, ITrainer
             }
         }
 
-        // Choose a random pokemon to send
-        ActivePokemon = pokemonAvailableInTheTeam[Random.Range(0, pokemonAvailableInTheTeam.Count)];
-        ActivePokemon.IsOutOfHisPokeball = true;
+        if (pokemonAvailableInTheTeam.Count > 0)
+        {
+            // Choose a random pokemon to send
+            ActivePokemon = pokemonAvailableInTheTeam[Random.Range(0, pokemonAvailableInTheTeam.Count)];
+            ActivePokemon.IsOutOfHisPokeball = true;
+
+            // Anounces the pokemon
+            Debug.Log(this.Name + " sent out " + this.ActivePokemon.Base.Name + "!");
+        }
+        else
+        {
+            // Anounces the defeat
+            Debug.Log(this.Name + " no longer has any pokemon capable of fighting...");
+
+            BattleManager.Instance.TrainersInBattle.Remove(this);
+
+            Debug.Log(((Human)BattleManager.Instance.TrainersInBattle[0]).Name + " wins the fight!");
+
+            // Stop the game
+            GameManager.Instance.GameOver();
+        }
     }
 }

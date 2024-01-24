@@ -48,20 +48,24 @@ public class LaunchBattle : MonoBehaviour
     {
         if (_inputSeed.text != "" && int.TryParse(_inputSeed.text, out int seedGiven))
         {
+            // Clear console logs and hides the seed choice
+            _gameManager.ClearLog();
+            _gameManager.SeedScreenMask.SetActive(true);
+
             // Announces the terrain
-            Debug.Log("A battle start on terrain " + _inputSeed.text);
+            Debug.Log("A battle starts on terrain " + _inputSeed.text);
 
             // Init random with the seed given
             _seed = seedGiven;
             Random.InitState(_seed);
 
-            // Sort all lists to be sure that it's the same order at each time
+            // Sorts all lists to be sure that it's the same order at each time
             _gameManager.SortAllLists();
 
             // Wait
             yield return new WaitForSeconds(1f);
 
-            // Generate a battle
+            // Generates a battle
             StartCoroutine(_battleManager.SetUpBattle());
         }
         else

@@ -32,7 +32,7 @@ public class Pokemon
     public bool IsOutOfHisPokeball { get; set; }
 
     /// <summary>
-    /// A value indicating indicating that the pokemon is KO.
+    /// A value indicating that the pokemon is KO.
     /// </summary>
     public bool IsKO { get; set; }
 
@@ -59,13 +59,60 @@ public class Pokemon
         Move attackToDo = this.Base.Moves[Random.Range(0, this.Base.Moves.Count)];
 
         // Anounces the attack
-        Debug.Log(((Human)TrainerOfThisPokemon).Name + "'s" + this.Base.Name + " uses " + attackToDo.Base.Name);
+        Debug.Log(((Human)TrainerOfThisPokemon).Name + "'s " + this.Base.Name + " uses " + attackToDo.Base.Name + "!");
 
         // Wait
         yield return new WaitForSeconds(1f);
 
-        // Attacks the enemy pokemon
-        defender.TakeDamages(attackToDo, this);
+        if (attackToDo.Base.IsHealer)
+        {
+            // Starts healing
+            this.Heal(attackToDo.Base.Damages);
+        }
+        else
+        {
+            // Attacks the enemy pokemon
+            defender.TakeDamages(attackToDo, this);
+        }
+    }
+
+    /// <summary>
+    /// Heals HP to the pokemon.
+    /// </summary>
+    /// <param name="nbrOfHPToHeal"> HP to heal. </param>
+    public void Heal(int nbrOfHPToHeal)
+    {
+        // Increases HP
+        HP += nbrOfHPToHeal;
+        if (HP >= this.Base.MaxHP)
+        {
+            HP = this.Base.MaxHP;
+        }
+
+        // Anounces heal
+        Debug.Log(((Human)TrainerOfThisPokemon).Name + "'s " + this.Base.Name + " recovers " + nbrOfHPToHeal.ToString() + "HP");
+
+        // Anounces new amount of HP
+        this.ShowHP();
+    }
+
+    /// <summary>
+    /// Revive a pokemon with an amount of HP given.
+    /// </summary>
+    /// <param name="nbrOfHPToHeal"> HP to heal. </param>
+    public void Revive(int nbrOfHPToHeal)
+    {
+        // The pokemon is no longer KO
+        IsKO = false;
+
+        // Heal the pokemon
+        HP = nbrOfHPToHeal;
+
+        // Anounces heal
+        Debug.Log(((Human)TrainerOfThisPokemon).Name + "'s " + this.Base.Name + " is no longer KO!");
+
+        // Anounces new amount of HP
+        this.ShowHP();
     }
 
     /// <summary>
@@ -84,7 +131,7 @@ public class Pokemon
         {
             case 0f:
                 {
-                    Debug.Log("It doesn't affect " + this.Base.Name);
+                    Debug.Log("It doesn't affect " + ((Human)this.TrainerOfThisPokemon).Name + "'s " + this.Base.Name);
                     break;
                 }
             case 0.5f:
@@ -104,14 +151,33 @@ public class Pokemon
         }
 
         // Calculates damages inflicted
-        int damage = (int)(Mathf.Round((attacker.Base.Attack) * (move.Base.Damages * 100) * effectiveness));
+        int damage = (int)(Mathf.Round((attacker.Base.Attack) * (move.Base.Damages / 100f) * effectiveness));
+
+        // Anounces damages
+        Debug.Log("The attack inflicts " + damage.ToString() + " damage on " + ((Human)TrainerOfThisPokemon).Name + "'s " + this.Base.Name);
 
         // Reduces HP
         HP -= damage;
+
+        // If HP are equals to 0, the pokemon is KO
         if (HP <= 0)
         {
             HP = 0;
+            this.PokemonIsKO();
         }
+    }
+
+    /// <summary>
+    /// The pokemon returns in his pokeball and is KO
+    /// </summary>
+    public void PokemonIsKO()
+    {
+        // Set the pokemon KO
+        this.IsKO = true;
+        this.IsOutOfHisPokeball = false;
+
+        // Anounces that the pokemon is KO
+        Debug.Log(((Human)(TrainerOfThisPokemon)).Name + "'s " + this.Base.Name + " fainted!");
     }
 
     /// <summary>
@@ -120,9 +186,9 @@ public class Pokemon
     public void ShowHP()
     {
         // Anounces HP of the pokemon
-        if (HP < 0)
+        if (HP > 0)
         {
-            Debug.Log(((Human)(TrainerOfThisPokemon)).Name + "'s " + this.Base.Name + " has " + HP.ToString() + " left");
+            Debug.Log(((Human)(TrainerOfThisPokemon)).Name + "'s " + this.Base.Name + " has " + HP.ToString() + "HP left");
         }
     }
 }
