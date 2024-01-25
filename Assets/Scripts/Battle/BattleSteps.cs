@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BattleSteps : MonoBehaviour
 {
     /// <summary>
-    /// Managerof the battle.
+    /// Manager of the battle.
     /// </summary>
     private BattleManager _battleManager { get; set; }
 
@@ -15,11 +16,11 @@ public class BattleSteps : MonoBehaviour
     }
 
     /// <summary>
-    /// Generate a battle between two trainers with a minimum of one pokemon.
+    /// Generates a battle between two trainers with a minimum of one pokemon.
     /// </summary>
     public void GenerateBattle()
     {
-        // Clear the list of trainers in battle
+        // Clears the list of trainers in battle
         if (_battleManager.TrainersInBattle.Count > 0)
         {
             _battleManager.TrainersInBattle.Clear();
@@ -27,7 +28,7 @@ public class BattleSteps : MonoBehaviour
 
         List<ITrainer> trainers = new(GameManager.Instance.TrainerList);
 
-        // Sort trainers without pokemon
+        // Removes trainers without pokemon
         for (int i = 0; i < trainers.Count; i++)
         {
             if (trainers[i].TeamSize <= 0)
@@ -36,7 +37,7 @@ public class BattleSteps : MonoBehaviour
             }
         }
 
-        // Choose two trainers for the battle
+        // Chooses two trainers for the battle
         for (int i = 0; i < 2; i++)
         {
             ITrainer trainerToAdd = trainers[Random.Range(0, trainers.Count)];
@@ -62,15 +63,15 @@ public class BattleSteps : MonoBehaviour
         // Announces the teams
         for (int i = 0; i < _battleManager.TrainersInBattle.Count; i++)
         {
-            // Wait
+            // Waits
             yield return new WaitForSeconds(1f);
 
             Debug.Log(((Human)_battleManager.TrainersInBattle[i]).Name + " has a team made up of :");
 
             for (int j = 0; j < _battleManager.TrainersInBattle[i].Team.Count; j++)
             {
-                // Wait
-                yield return new WaitForSeconds(0.5f);
+                // Waits
+                yield return new WaitForSeconds(1f);
 
                 Debug.Log(_battleManager.TrainersInBattle[i].Team[j].Base.Name);
             }
@@ -92,14 +93,28 @@ public class BattleSteps : MonoBehaviour
     }
 
     /// <summary>
-    /// If there is healers available, it chooses a random healer who will be at the edge of the terrain.
+    /// If there is healer available, it chooses a random healer who will be at the edge of the terrain.
     /// </summary>
-    /// <returns></returns>
     public void GenerateHealer()
     {
-        if (GameManager.Instance.HealerList.Count > 0)
+        List<IHealer> healers = new (GameManager.Instance.HealerList);
+
+        // Removes healers who are in the battle as trainers
+        if (healers.Count > 0)
         {
-            _battleManager.HealerInBattle = GameManager.Instance.HealerList[Random.Range(0, GameManager.Instance.HealerList.Count)];
+            for (int i = 0; i < healers.Count; i++)
+            {
+                if (healers[i] is ITrainer healer && _battleManager.TrainersInBattle.Contains(healer))
+                {
+                    healers.Remove(healers[i]);
+                }
+            }
+        }
+
+        if (healers.Count > 0)
+        {
+            // Chooses the healer
+            _battleManager.HealerInBattle = healers[Random.Range(0, healers.Count)];
 
             // Anounces the healer
             Debug.Log(((Human)_battleManager.HealerInBattle).Name + " observes the match at the edge of the terrain with his care equipment");
@@ -116,11 +131,13 @@ public class BattleSteps : MonoBehaviour
     /// </summary>
     public void CheckActivePokemons()
     {
-        // Check if active there is an active pokemon or if he is KO in his pokeball
+        // Checks if there is an active pokemon or if he is KO in his pokeball
         for (int i = 0; i < _battleManager.TrainersInBattle.Count; i++)
         {
-            if (_battleManager.TrainersInBattle[i].ActivePokemon.Base == null ||
-                (!_battleManager.TrainersInBattle[i].ActivePokemon.IsOutOfHisPokeball && _battleManager.TrainersInBattle[i].ActivePokemon.IsKO))
+            Pokemon pokemonToCheck = _battleManager.TrainersInBattle[i].ActivePokemon;
+
+            if (pokemonToCheck.Base == null ||
+                (!pokemonToCheck.IsOutOfHisPokeball && pokemonToCheck.IsKO))
             {
                 _battleManager.TrainersInBattle[i].ChooseAPokemonToSend();
             }
@@ -128,14 +145,14 @@ public class BattleSteps : MonoBehaviour
     }
 
     /// <summary>
-    /// Chooses if the healer has to intervene
+    /// Chooses if the healer has to intervene.
     /// </summary>
     public void HealerTurn()
     {
-        // Determine if the healer intervenes or not
+        // Determines if the healer intervenes or not
         switch (Random.Range(0, 10))
         {
-            // He intervene
+            // He intervenes
             case 0:
                 {
                     _battleManager.HealerInBattle.ChooseAnAction();
@@ -151,43 +168,44 @@ public class BattleSteps : MonoBehaviour
     }
 
     /// <summary>
-    /// Trainers attacks one after the other.
+    /// Trainers attack one after the other.
     /// </summary>
     /// <returns></returns>
     public IEnumerator TrainersTurn()
     {
-        // Get the list of active pokemons in order of priority
+        // Gets the list of active pokemons in order of priority
         List<Pokemon> pokemonPriority = OrderPriority();
 
         // Anounces first pokemon to attack
         Debug.Log(((Human)pokemonPriority[0].TrainerOfThisPokemon).Name + "'s " + pokemonPriority[0].Base.Name + " attacks first");
 
-        // Wait
+        // Waits
         yield return new WaitForSeconds(1f);
 
         // The first pokemon attacks the other
         yield return StartCoroutine(pokemonPriority[0].ChooseAnAttackFor(pokemonPriority[1]));
 
-        // Wait
+        // Waits
         yield return new WaitForSeconds(1f);
 
-        // Show HP of the defender pokemon
+        // Shows HP of the defender pokemon
         if (!pokemonPriority[1].IsKO && pokemonPriority[1].IsOutOfHisPokeball)
         {
             pokemonPriority[1].ShowHP();
 
-            // Wait
+            // Waits
             yield return new WaitForSeconds(1f);
 
             // Anounces second pokemon to attack
             Debug.Log("It's " + ((Human)pokemonPriority[1].TrainerOfThisPokemon).Name + "'s " + pokemonPriority[1].Base.Name + "'s turn to attack");
 
-            // Wait
+            // Waits
             yield return new WaitForSeconds(1f);
 
+            // The second pokemon attacks
             yield return StartCoroutine(pokemonPriority[1].ChooseAnAttackFor(pokemonPriority[0]));
 
-            // Wait
+            // Waits
             yield return new WaitForSeconds(1f);
 
             // Shows HP of the defender pokemon
@@ -199,7 +217,7 @@ public class BattleSteps : MonoBehaviour
     }
 
     /// <summary>
-    /// Return the list of active pokemons in order of priority
+    /// Returns the list of active pokemons in order of priority
     /// </summary>
     /// <returns></returns>
     private List<Pokemon> OrderPriority()

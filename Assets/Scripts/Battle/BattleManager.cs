@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
@@ -57,31 +56,28 @@ public class BattleManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator SetUpBattle()
     {
-        // Wait
-        yield return new WaitForSeconds(1f);
-
-        // Generate battle
+        // Generates battle
         _battleSteps.GenerateBattle();
 
-        // Wait
+        // Waits
         yield return new WaitForSeconds(1f);
 
-        // Generate teams
+        // Generates teams
         yield return StartCoroutine(_battleSteps.GenerateTeams());
 
         // Initialises pokemons in the team of each trainer in the battle
         _battleSteps.InitPokemons();
 
-        // Wait
+        // Waits
         yield return new WaitForSeconds(1f);
 
-        // Generate the healer
+        // Generates the healer
         _battleSteps.GenerateHealer();
 
-        //Wait
+        // Waits
         yield return new WaitForSeconds(1f);
 
-        // Start battle
+        // Starts battle
         Debug.Log("The battle starts!");
         StartCoroutine(NewBattleRound());
     }
@@ -92,13 +88,13 @@ public class BattleManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator NewBattleRound()
     {
-        //Wait
+        // Waits
         yield return new WaitForSeconds(1f);
 
-        // Send pokemons if there is any need
+        // Sends pokemons if there is any need
         _battleSteps.CheckActivePokemons();
-
-        //Wait
+        
+        // Waits
         yield return new WaitForSeconds(1f);
 
         // Healer turn
@@ -107,13 +103,13 @@ public class BattleManager : MonoBehaviour
             _battleSteps.HealerTurn();
         }
 
-        // Wait
+        // Waits
         yield return new WaitForSeconds(1f);
 
         // Pokemons fight
         yield return StartCoroutine(_battleSteps.TrainersTurn());
 
-        // Start a new round
+        // Starts a new round
         StartCoroutine(NewBattleRound());
     }
 }

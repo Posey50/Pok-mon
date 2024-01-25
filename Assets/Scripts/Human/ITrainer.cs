@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public interface ITrainer
 {
     /// <summary>
-    /// List of pokemons in the team of this trainer.
+    /// List of pokemons in the team of the trainer.
     /// </summary>
     public List<Pokemon> Team { get; set; }
 
@@ -33,7 +33,7 @@ public interface ITrainer
     public void GenerateTeam();
 
     /// <summary>
-    /// Choose a random pokemon to send.
+    /// Chooses a random pokemon to send.
     /// </summary>
     public void ChooseAPokemonToSend();
 }

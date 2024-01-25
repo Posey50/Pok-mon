@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Sort all lists by alphabetic order to be sure that it's the same order at each game.
+    /// Sorts all lists by alphabetic order to be sure that it's the same order at each game.
     /// </summary>
     public void SortAllLists()
     {
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
-        // Stop the fight
+        // Stops the fight
         BattleManager.Instance.StopAllCoroutines();
 
         // Gives the possibility of restarting a fight
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Clear every logs on the console.
+    /// Clears every logs on the console.
     /// </summary>
     public void ClearLog()
     {

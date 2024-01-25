@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -115,7 +114,7 @@ public class Brock : Human, IHealer, ITrainer
             }
         }
 
-        // Cookes for all pokemons which or not KO
+        // Cookes for all pokemons which are not KO
         if (pokemonsToHeal.Count > 0)
         {
             for (int i = 0; i < pokemonsToHeal.Count; i++)
@@ -198,7 +197,7 @@ public class Brock : Human, IHealer, ITrainer
 
     public void GenerateTeam()
     {
-        // Clear the team
+        // Clears the team
         if (Team.Count > 0)
         {
             Team.Clear();
@@ -207,7 +206,7 @@ public class Brock : Human, IHealer, ITrainer
         // Pokemons available for the team
         List<Pokemon> pokemonsAvailable = new(PokemonPool);
 
-        // Create the team
+        // Creates the team
         for (int j = 0; j < TeamSize; j++)
         {
             if (pokemonsAvailable.Count > 0)
@@ -225,7 +224,7 @@ public class Brock : Human, IHealer, ITrainer
     {
         List<Pokemon> pokemonAvailableInTheTeam = new(Team);
 
-        // Sort pokemons KO and the active pokemon if there is one
+        // Removes pokemons KO and the active pokemon if there is one
         for (int i = 0; i < Team.Count; i++)
         {
             if (Team[i].IsKO || Team[i].IsOutOfHisPokeball)
@@ -236,7 +235,7 @@ public class Brock : Human, IHealer, ITrainer
 
         if (pokemonAvailableInTheTeam.Count > 0)
         {
-            // Choose a random pokemon to send
+            // Chooses a random pokemon to send
             ActivePokemon = pokemonAvailableInTheTeam[Random.Range(0, pokemonAvailableInTheTeam.Count)];
             ActivePokemon.IsOutOfHisPokeball = true;
 
@@ -252,7 +251,7 @@ public class Brock : Human, IHealer, ITrainer
 
             Debug.Log(((Human)BattleManager.Instance.TrainersInBattle[0]).Name + " wins the fight!");
 
-            // Stop the game
+            // Stops the game
             GameManager.Instance.GameOver();
         }
     }

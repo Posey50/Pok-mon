@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class LaunchBattle : MonoBehaviour
@@ -42,27 +40,27 @@ public class LaunchBattle : MonoBehaviour
     }
 
     /// <summary>
-    /// Start a battle by checking if there is a valid seed given.
+    /// Starts a battle by checking if there is a valid seed given.
     /// </summary>
     public IEnumerator StartBattle()
     {
         if (_inputSeed.text != "" && int.TryParse(_inputSeed.text, out int seedGiven))
         {
-            // Clear console logs and hides the seed choice
+            // Clears console logs and hides the seed choice
             _gameManager.ClearLog();
             _gameManager.SeedScreenMask.SetActive(true);
 
             // Announces the terrain
             Debug.Log("A battle starts on terrain " + _inputSeed.text);
 
-            // Init random with the seed given
+            // Initialises random with the seed given
             _seed = seedGiven;
             Random.InitState(_seed);
 
             // Sorts all lists to be sure that it's the same order at each time
             _gameManager.SortAllLists();
 
-            // Wait
+            // Waits
             yield return new WaitForSeconds(1f);
 
             // Generates a battle

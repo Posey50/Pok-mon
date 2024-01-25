@@ -295,6 +295,68 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &166158006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 166158007}
+  m_Layer: 0
+  m_Name: ----Managers----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &166158007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166158006}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &172254523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 172254524}
+  m_Layer: 0
+  m_Name: ----Humans----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &172254524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172254523}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &233659882
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +573,7 @@ GameObject:
   - component: {fileID: 357536770}
   - component: {fileID: 357536771}
   m_Layer: 0
-  m_Name: Ondine
+  m_Name: Misty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -547,11 +609,35 @@ MonoBehaviour:
   <Team>k__BackingField: []
   <PokemonPool>k__BackingField:
   - _base: {fileID: 11400000, guid: 588d00b025333a7449d59dea63774fe4, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
   - _base: {fileID: 11400000, guid: 43c7ee16dd1e35647bc35b5c04526a13, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
   - _base: {fileID: 11400000, guid: 0b80c3ba1edbb194d910314d77ee0e87, type: 2}
-  <TeamSize>k__BackingField: 2
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 460016086a6a5ee4191868e177764ab3, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 042d7d81234571741aeaf61e5a3ec5d3, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 0b057e555cdb3ed45a8f4e79c6078759, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  <TeamSize>k__BackingField: 4
   <ActivePokemon>k__BackingField:
     _base: {fileID: 0}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +876,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &770618544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770618545}
+  m_Layer: 0
+  m_Name: ----General----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &770618545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770618544}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &802691302
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,6 +1051,50 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832575517}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &858950283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858950285}
+  - component: {fileID: 858950284}
+  m_Layer: 0
+  m_Name: NurseJoy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &858950284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858950283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6f4c658aa95ad49828488d002ac4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &858950285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858950283}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1117,6 +1278,70 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000015259, y: 0.000015259}
   m_SizeDelta: {x: 614.52, y: 115.2223}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &987595688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 987595690}
+  - component: {fileID: 987595689}
+  m_Layer: 0
+  m_Name: James
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &987595689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987595688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2abbe3204e10094c9528b77ac2de88f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Team>k__BackingField: []
+  <PokemonPool>k__BackingField:
+  - _base: {fileID: 11400000, guid: 28793da9b2ddd8246be90dee6183f60c, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 726d719a9fd96c64eb910551b4cf2176, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: f019b7984d4d15343b766c215e249950, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  <TeamSize>k__BackingField: 3
+  <ActivePokemon>k__BackingField:
+    _base: {fileID: 0}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+--- !u!4 &987595690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987595688}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &996885690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,6 +1683,70 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1705490677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1705490679}
+  - component: {fileID: 1705490678}
+  m_Layer: 0
+  m_Name: Jessie
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1705490678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705490677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9791741d288b5949b62c37e59b1d7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Team>k__BackingField: []
+  <PokemonPool>k__BackingField:
+  - _base: {fileID: 11400000, guid: cebb453719d238149a27899076e4ef5f, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 93c33da9e94d83745a256e4f93b73102, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 0b5ff71f697e71e45a04ce3d7bbed20e, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  <TeamSize>k__BackingField: 3
+  <ActivePokemon>k__BackingField:
+    _base: {fileID: 0}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+--- !u!4 &1705490679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705490677}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1751237860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,7 +1758,7 @@ GameObject:
   - component: {fileID: 1751237862}
   - component: {fileID: 1751237861}
   m_Layer: 0
-  m_Name: Sasha
+  m_Name: Ash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1490,11 +1779,35 @@ MonoBehaviour:
   <Team>k__BackingField: []
   <PokemonPool>k__BackingField:
   - _base: {fileID: 11400000, guid: 588d00b025333a7449d59dea63774fe4, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
   - _base: {fileID: 11400000, guid: 43c7ee16dd1e35647bc35b5c04526a13, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
   - _base: {fileID: 11400000, guid: 0b80c3ba1edbb194d910314d77ee0e87, type: 2}
-  <TeamSize>k__BackingField: 2
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 770555cbee74288418531477eacc4d3a, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 77df9622fd1b98249bb90a633db5d577, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: b4fe84a39132f424bb1e305a3ac983f5, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  <TeamSize>k__BackingField: 4
   <ActivePokemon>k__BackingField:
     _base: {fileID: 0}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
 --- !u!4 &1751237862
 Transform:
   m_ObjectHideFlags: 0
@@ -1725,7 +2038,7 @@ GameObject:
   - component: {fileID: 1973454749}
   - component: {fileID: 1973454748}
   m_Layer: 0
-  m_Name: Pierre
+  m_Name: Brock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1744,10 +2057,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Team>k__BackingField: []
-  <PokemonPool>k__BackingField: []
-  <TeamSize>k__BackingField: 0
+  <PokemonPool>k__BackingField:
+  - _base: {fileID: 11400000, guid: 588d00b025333a7449d59dea63774fe4, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 43c7ee16dd1e35647bc35b5c04526a13, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 0b80c3ba1edbb194d910314d77ee0e87, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 19f93b60ba45aad4daad2104014d79ec, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: af5590d9024df4a4690a7da2cddc6223, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  - _base: {fileID: 11400000, guid: 3dda0d73cd391b74c8a582184a3fd796, type: 2}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
+  <TeamSize>k__BackingField: 4
   <ActivePokemon>k__BackingField:
     _base: {fileID: 0}
+    <HP>k__BackingField: 0
+    <IsOutOfHisPokeball>k__BackingField: 0
+    <IsKO>k__BackingField: 0
 --- !u!4 &1973454749
 Transform:
   m_ObjectHideFlags: 0
@@ -1842,13 +2182,19 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 770618545}
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 802691306}
+  - {fileID: 233659885}
+  - {fileID: 166158007}
   - {fileID: 693866616}
   - {fileID: 1829594080}
+  - {fileID: 172254524}
   - {fileID: 1751237862}
   - {fileID: 357536770}
   - {fileID: 1973454749}
-  - {fileID: 802691306}
-  - {fileID: 233659885}
+  - {fileID: 858950285}
+  - {fileID: 1705490679}
+  - {fileID: 987595690}

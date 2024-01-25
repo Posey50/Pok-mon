@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Move", menuName = "Move/Create new move")]
@@ -18,7 +16,7 @@ public class MoveBase : ScriptableObject
     private PokemonType _type;
 
     /// <summary>
-    /// Defines if the attack is an heal attack.
+    /// Defines if the attack is an healer attack.
     /// </summary>
     [SerializeField]
     private bool _isHealer;
@@ -40,7 +38,7 @@ public class MoveBase : ScriptableObject
     public PokemonType Type { get { return _type; } private set { } }
 
     /// <summary>
-    /// Gets a value indicating if the attack is an heal attack.
+    /// Gets a value indicating if the attack is an healer attack.
     /// </summary>
     public bool IsHealer { get { return _isHealer; } private set { } }
 

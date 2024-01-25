@@ -29,7 +29,7 @@ public static class TypeChart
     };
 
     /// <summary>
-    /// Return an efficiency coefficient depending of the type of the move and the pokemon who receives it.
+    /// Returns an efficiency coefficient depending of the type of the move and the pokemon who receives it.
     /// </summary>
     /// <param name="attackType"> The type of the attack received. </param>
     /// <param name="defendType"> The type of the pokemon who receives the attack. </param>

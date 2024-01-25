@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50070432c6d132444a2fc469121eb558, type: 3}
+  m_Name: Golbat
+  m_EditorClassIdentifier: 
+  _name: Golbat
+  _type: 8
+  _maxHP: 75
+  _attack: 80
+  _defense: 70
+  _speed: 90
+  _moves:
+  - _base: {fileID: 11400000, guid: 059d3f6e1e4f6fb4888c34542905f86b, type: 2}
+  - _base: {fileID: 11400000, guid: eed90bb5391357245af1a27489c94b36, type: 2}

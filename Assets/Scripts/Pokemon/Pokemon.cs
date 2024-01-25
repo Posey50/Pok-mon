@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -61,7 +60,7 @@ public class Pokemon
         // Anounces the attack
         Debug.Log(((Human)TrainerOfThisPokemon).Name + "'s " + this.Base.Name + " uses " + attackToDo.Base.Name + "!");
 
-        // Wait
+        // Waits
         yield return new WaitForSeconds(1f);
 
         if (attackToDo.Base.IsHealer)
@@ -105,7 +104,7 @@ public class Pokemon
         // The pokemon is no longer KO
         IsKO = false;
 
-        // Heal the pokemon
+        // Heals the pokemon
         HP = nbrOfHPToHeal;
 
         // Anounces heal
@@ -172,7 +171,7 @@ public class Pokemon
     /// </summary>
     public void PokemonIsKO()
     {
-        // Set the pokemon KO
+        // Sets the pokemon KO
         this.IsKO = true;
         this.IsOutOfHisPokeball = false;
 
